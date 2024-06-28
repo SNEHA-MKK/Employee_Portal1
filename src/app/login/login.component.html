@@ -1,0 +1,27 @@
+<div style="height:80vh; " class="row d-flex justify-content-center align-items-center ">
+    <div class="col-md-7 d-flex justify-content-center align-items-center">
+        <img src="https://www.shutterstock.com/image-vector/man-key-near-computer-account-260nw-1499141258.jpg" alt="">
+    </div>
+    <div class="col-md-4 p-4 d-flex justify-content-center align-items-center">
+        <form (ngSubmit)="login()" action="" class="shadow p-4 rounded w-100"
+            style="background-image: linear-gradient(to right,white,rgb(124, 124, 190));">
+            <h3 class="text-center text-light">Login Form</h3>
+            <div class="mb-3">
+                <input #loginEmail="ngModel" type="text" placeholder="Email ID" class="form-control" name="mail"
+                    [(ngModel)]="mailId" required mail>
+                <span *ngIf="loginEmail.invalid && loginEmail.touched" class="text-danger">Invalid Input</span>
+            </div>
+
+            <div class="mb-3">
+                <input #loginPswd="ngModel" type="text" placeholder="Password" class="form-control" name="pswd"
+                    [(ngModel)]="pswd" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{4,}$">
+                <span *ngIf="loginPswd.invalid && loginPswd.touched" class="text-danger">Invalid Input</span>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" [disabled]="loginEmail.invalid || loginPswd.invalid" class="btn w-100"
+                    style="background-color: rgb(12,12,113);color: white;">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

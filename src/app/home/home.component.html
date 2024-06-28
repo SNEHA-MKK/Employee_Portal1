@@ -1,0 +1,94 @@
+<!-- <div class="row">
+    <div class="col-md-2" style="height: 86vh; width: 250px; background-color: rgb(12,12,113);" class="d-flex align-items-center flex-column">
+        <a routerLink="/dashboard" class="mt-5 text-light fs-4" style="text-decoration: none;">Dashboard</a>
+        <a routerLink="/employee" class="mt-3 text-light fs-4" style="text-decoration: none;">Employee</a>
+    </div>
+    <div class="col-md-10">
+
+    </div>
+</div> -->
+
+<div class="d-flex " style="overflow-x: hidden;">
+    <div *ngIf="status" style="height: 100vh; width: 250px ; background-color: rgb(13, 13, 52);"
+        class="d-flex align-items-center flex-column">
+
+        <a routerLink="/dashboard" class="mt-5 text-light fs-5" style="text-decoration: none;">DashBoard</a>
+        <a routerLink="/employee" class="mt-2 text-light fs-5" style="text-decoration: none;">Employees</a>
+
+    </div>
+
+    <div class="row w-100">
+        <div class="col-md-8 pt-3 ps-4">
+            <div class="d-flex align-items-center" style="background-color:rgb(141, 110, 199); height: 150px;">
+
+                <h1 class="ms-3 text-light "> <i (click)="changeStatus()" class="fa-solid fa-bars ms-3 me-2  fs-4"
+                        style="color: #ffffff;"></i>Welcome Admin</h1>
+
+            </div>
+            <div class="row w-100 mt-4">
+                <div class="col-md-6">
+                    <p class="fs-4 text-center">Calender</p>
+                    <mat-card class="demo-inline-calendar-card ms-4 shadow">
+                        <mat-calendar [(selected)]="selected"></mat-calendar>
+                    </mat-card>
+
+
+
+                </div>
+                <div class="col-md-6 mt-3 shadow">
+
+                    <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
+                        style="width: 100%; height: 400px; display: block;"></highcharts-chart>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-4 pe-5 mt-2">
+            <div *ngIf="editStatus"
+                class="mt-3 shadow d-flex flex-column justify-content-center align-items-center rounded"
+                style="height: 400px; background-color: rgb(141, 110, 199);">
+                <img [src]="profileImage" alt="" width="200px" height="200px" style="border-radius: 50%;">
+                <a (click)="getEditStatus()" style="text-decoration: none;" class="fs-4 text-light text-center"> Edit
+                    the Admin details <i class="fa-solid fa-pen text-light"></i></a>
+
+            </div>
+            <div *ngIf="!editStatus"
+                class="mt-2 w-100 shadow d-flex flex-column justify-content-center align-items-center rounded"
+                style="height: 400px; background-color: rgb(141, 110, 199);">
+                <h4 class="text-light mb-3 pt-5 fs-3">Update Admin Details</h4>
+
+                <label>
+                    <input (change)="getFile($event)" type="file" style="display: none;">
+                    <img [src]="profileImage" alt="no img" width="150px" height="150px" style="border-radius: 50%;">
+                </label>
+
+                <form action="" class="w-100 p-4">
+                    <div class="mb-3">
+                        <input type="text" placeholder="Admin name" class="form-control" name="adName"
+                            [(ngModel)]="adminDetails.name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" placeholder="Password" class="form-control" name="adpswd"
+                            [(ngModel)]="adminDetails.Password">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button class="btn btn-warning" (click)="reset()">Cancel</button>
+                        <button class="btn btn-success" (click)="updateAdmin()">Update</button>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="shadow rounde4 mt-4 d-flex  justify-content-center align-items-center w-100"
+                style="background-color: rgb(141, 110, 199);height: 140px;">
+                <h1 class="text-light"><i class="fa-solid fa-users me-3 "></i>Employee count: {{totalEmployee}} </h1>
+
+            </div>
+        </div>
+
+           
+    </div>
+</div>
